@@ -1,0 +1,81 @@
+<div class="home_block">
+    <h2>How to order?</h2>
+</div>
+<div class="home_block">
+    <h2><?php echo date('M'); ?></h2>
+    <table cellspacing="0" id="month_calendar">
+        <thead>
+            <tr>
+                <?php foreach($dayOfWeek as $dow) echo '<th>'.$dow.'</th>'; ?>            
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                $start_month_from = date("N", strtotime("1 ".date("M")." ".date("Y")));
+                $month_last_day = date("t");           
+
+                echo '<tr>';
+                $in_line = 0;
+                for($k=1; $k<$start_month_from; $k++)
+                {   
+                    echo '<td class="padding"></td>';
+                    $in_line++;
+                    if($in_line==7)
+                    {
+                        echo '</tr><tr>';
+                        $in_line = 0;
+                    }
+                }
+
+                for($j=1; $j<=$month_last_day; $j++)
+                {                    
+                    $in_line++;
+                    $menu = '<div class="events">
+                            <ul>
+                                <li>
+                                    <span class="title">Итого: 25 грн.</span>
+                                    <span class="desc">фывыфвфы</span>
+                                    <span class="desc">фывыфвфы</span>
+                                    <span class="desc">фывыфвфы</span>
+                                </li>                            
+                            </ul>
+                        </div>';
+
+                    $has_event = ($in_line==6 || $in_line==7) ? false : true;
+                    echo '<td class="'.($j==date("d")?'today ':'').' '.($has_event?'date_has_event ':'').'">';
+
+                    if($in_line==6 || $in_line==7)
+                    {
+                        echo sprintf("%02d", $j);
+                        echo $menu;
+                        echo '<p class="total_price">&nbsp;</p>';
+                    }
+                    else
+                    {
+                        echo '<a href="/?action=order&date='.date("d-m-Y").'">'.sprintf("%02d", $j).'</a>';
+                        echo $menu;
+                        echo '<p class="total_price">&mdash;</p>';
+                    }
+
+                    echo '</td>';                    
+
+                    if($in_line==7)
+                    {
+                        echo '</tr><tr>';
+                        $in_line = 0;
+                    }
+                }
+                if($in_line!=7)
+                {
+                    for($k=1; $k<=7-$in_line; $k++) echo '<td class="padding"></td>';
+                }
+                echo '</tr>';
+
+            ?>
+        </tbody>
+        <tfoot>
+            <?php foreach($dayOfWeek as $dow) echo '<th>'.$dow.'</th>'; ?>            
+        </tfoot>
+    </table>
+</div>
+<div style="clear:both;"></div>

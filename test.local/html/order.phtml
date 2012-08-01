@@ -1,0 +1,40 @@
+<?php
+    $date = !empty($_REQUEST['date']) ? strtotime(trim($_REQUEST['date'])) : mktime(0,0,0,date("m"),date("d")+1,date("Y"));
+    $date_formatted = date("d-m-Y", $date) . ', ' . strtolower($dayOfWeek[date("l", $date)]);
+    global $dayOfWeek;
+	
+	$userTotal = $classOrder->getUserOrdersTotalAmount($_SESSION["userid"], $date);
+?>
+<h2>Заказ обеда на <?php echo $date_formatted; ?></h2>
+
+<input type="hidden" name="order_data" id="order_data" value="<?php echo base64_encode($date.'_'.$_SESSION["userid"]) ?>">
+
+<table width="100%" class="orders">
+	<tr>
+		<td class="menuGrid">
+            <div id="menuGrid_container" style="height:500px;width:500px;"></div>            
+		</td>
+		<td class="ordersGrid">
+			<b>Заказ на:</b> <?php echo $date_formatted; ?>			           
+			<div id="order_info"></div>
+			<br/><br/> 
+			<b>Мой заказ:</b><br>
+			<div id="ordersGrid_container" style="width:500px;height:200px;"></div>
+			<?php if($userTotal>0) { ?>
+				<br/><br/>			
+				<b>К оплате:</b> <span id="user-total"><?php echo sprintf('%.2f', $userTotal); ?> грн.</span> <button onclick="$.da.orders.refreshAmount()">Пересчитать</button>
+			<?php } ?>
+			<br/><br/>
+			<button onclick="$.da.orders.deleteOrder()">Удалить из заказа</button>
+		</td>
+	</tr>    
+</table>
+<button onclick="addRow()">Save</button>   
+	
+	
+	
+<script type="text/javascript">
+	$(window).ready(function(){
+		$.da.orders.doInitGrids();
+	});
+</script>

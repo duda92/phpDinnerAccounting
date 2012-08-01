@@ -1,0 +1,87 @@
+<html>
+<head>
+	<link rel="STYLESHEET" type="text/css" href="js/lib/dhtmlxgrid.css">
+	
+    <script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/dhtmlxcommon.js"></script>
+    <script src="js/lib/dhtmlxgrid.js"></script>
+    <script src="js/lib/dhtmlxgridcell.js"></script>
+	<script src="js/lib/ext/dhtmlxdataprocessor.js"></script>
+	
+    <script>
+        var ordersGrid;
+		var menuGrid;
+		
+		function doInitGrids()
+		{
+			doInitOrdersGrid();
+			doInitMenuGrid();
+		}
+		
+		function doInitOrdersGrid(){	 
+			ordersGrid = new dhtmlXGridObject('ordersGrid_container');
+				
+			ordersGrid.setImagePath("lib/imgs/");		 
+			ordersGrid.setHeader("1,2,3,4,5");		 
+			ordersGrid.setInitWidths("150,150,150,150,150");		 
+			ordersGrid.setColAlign("right,right,right,right,right");
+			//ordersGrid.attachEvent("onRowSelect",doOnRowSelected);			
+			ordersGrid.setSkin("light");	
+			ordersGrid.init();
+			ordersGrid.loadXML("data.xml");		
+			var dp = new dataProcessor('test.php');
+			dp.init(ordersGrid);			
+		}
+		
+		function doInitMenuGrid(){	 
+			menuGrid = new dhtmlXGridObject('menuGrid_container');
+				
+			menuGrid.setImagePath("lib/imgs/");		 
+			menuGrid.setHeader("1,2,3");		 
+			menuGrid.setInitWidths("150,150,150");		 
+			menuGrid.setColAlign("right,right,right");
+			menuGrid.setColTypes("ro,ro,ro");
+			menuGrid.attachEvent("onRowSelect",doOnRowSelected);			
+			menuGrid.setSkin("light");	
+			menuGrid.init();
+			menuGrid.loadXML("menu.xml");		
+			var dp = new dataProcessor('test.php');
+			dp.init(menuGrid);			
+		}
+		
+		function addRow(){
+			var newId = (new Date()).valueOf()
+			ordersGrid.addRow(newId,"",ordersGrid.getRowsNum())
+			ordersGrid.selectRow(ordersGrid.getRowIndex(newId),false,false,true);
+		}
+		function removeRow(){
+			var selId = ordersGrid.getSelectedId()
+			ordersGrid.deleteRow(selId);
+		}
+		
+		function doOnRowSelected(rowID,celInd){
+		   //alert("Selected row ID is "+rowID+"\nUser clicked cell with index "+celInd);
+		   ordersGrid.cellByIndex(0,$('select#date').val()-1).setValue("Selected row ID is "+rowID+"\nUser clicked cell with index "+celInd)
+			
+		}
+		
+		function f(){
+			ordersGrid.cellByIndex(1,1).setValue('dd');
+		}
+    </script>
+	
+	
+</head>
+<body onload="doInitGrids();">
+    <button onclick="addRow()">Save</button>   <button onclick="removeRow()">Remove Row</button>
+	<div id="ordersGrid_container" style="width:800px;height:150px;"></div>
+	<select id="date">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+	</select>
+	<div id="menuGrid_container" style="height:150px;"></div>
+</body>
+</html>

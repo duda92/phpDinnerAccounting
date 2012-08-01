@@ -1,0 +1,44 @@
+<html>
+<!--<![endif]-->
+<head>
+<meta charset="utf-8" /> 
+<title><?php echo SITE_TITLE ?></title>
+    <link href="/css/styles.css" type="text/css" rel="stylesheet" />
+	<link rel="STYLESHEET" type="text/css" href="js/lib/dhtmlxgrid.css">
+	
+    <script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/dhtmlxcommon.js"></script>
+    <script src="js/lib/dhtmlxgrid.js"></script>
+    <script src="js/lib/dhtmlxgridcell.js"></script>
+	<script src="js/lib/ext/dhtmlxdataprocessor.js"></script>
+	<script src="js/functions.js"></script>    
+	<script src="js/coda.js" type="text/javascript"> </script>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+	<div class="header">
+		<h1><?php echo SITE_TITLE ?></h1>
+		<a href="/"><img src="/images/software-company.gif" width="160" height="38" alt="Software Development Company, Software Outsourcing" title="Software Development Company, Software Outsourcing" class="logo" /></a>
+		<div class="topnavigation">
+			<div class="rnav">
+                <?php if($verify['result']) { ?>
+                    <a href="/?action=order" id="order">Заказ обеда!</a> | 		
+                    <a href="/">Правила</a> | 
+                    <a href="/?logout=1">Выход</a>
+                <?php } ?>
+			</div>
+
+			<div class="lnav"> 
+                <?php 
+                if($verify['result']) {
+                    echo 'Привет ' . $_SESSION["displayname"];
+                }
+                else {
+                    echo $verify['message'].'. <a href="' . $PHP_SELF . '?logout=1">Click here</a> to try again.';
+                }
+                ?>
+			</div> 
+		</div>
+	</div>

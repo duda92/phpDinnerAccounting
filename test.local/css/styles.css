@@ -1,0 +1,241 @@
+* {
+    font: 11px Tahoma,Arial,Verdana,sans-serif;
+}
+
+body {
+    color: #333333;
+    font: 11px Tahoma,Arial,Verdana,sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url("/images/bl.jpg") no-repeat scroll right top #FFFFFF;    
+}
+
+.container, .footer .wrap {
+    margin: 20px auto;
+    position: relative;
+    width: 1097px;
+}
+
+.header {
+    height: 123px;
+    margin-bottom: -15px;
+    margin-top: -20px;
+    position: relative;
+}
+
+.header h1 {
+    color: #325D92;
+    font-size: 20px;
+    font-weight: normal;
+    left: 36%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 22px;
+}
+
+a, a:visited, a:link {
+    color: #2160A6;
+}
+
+.header .topnavigation {
+    background: url("/images/blue-bar.jpg") no-repeat scroll 0 0 #084898;
+    color: #FFFFFF;
+    font-size: 12px;
+    height: 34px;
+    margin: 75px 0 0;
+    position: absolute;
+    width: 1097px;
+}
+
+.header .logo {
+    left: 14px;
+    position: absolute;
+    top: 22px;
+}
+
+.header .topnavigation .rnav {
+    float: right;
+    padding: 10px 14px 0 0;
+    text-align: right;    
+}
+
+.header .topnavigation a:link, .header .topnavigation a:active, .header .topnavigation a:visited {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.header .topnavigation .lnav {
+    margin: 6px 0 0 14px;
+    vertical-align: middle;
+    padding-top: 4px;
+}
+
+.header .topnavigation .lnav a {
+    text-decoration: underline;
+}
+
+.content {
+    width: 1057px;
+    background: #FFFFFF;
+    opacity: 0.9;
+    visibility: 0.9;
+    min-height: 400px;
+    border: 1px solid #EDEDED;
+    padding: 20px;
+}
+
+.breadcrumbs {
+    color: #2160A6;
+    font-size: 11px;
+    padding: 9px 14px;
+}
+
+.breadcrumbs strong {
+    color: #2160A6;
+    font-weight: normal;
+}
+
+.footer {
+    background: url("/images/footer-bg.png") repeat-x scroll center top #EDEDED;
+    color: #808080;
+    min-width: 1097px;
+    padding: 14px 0;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+h2 {
+    color: #229F01;    
+    font-size: 22px;
+}
+
+a#order {
+    text-decoration: blink;
+}
+
+table.orders tr td {
+	vertical-align: top;
+}
+
+table.orders tr td.ordersGrid {
+	text-align: left;
+    padding-left: 20px;
+}
+
+table.orders tr td.menuGrid {
+	width: 520px;
+	text-align: left;
+}
+
+b {
+    font-weight: bold;
+}
+
+#order_info input[type=button] {
+    float: right;
+}
+
+table#month_calendar {
+	border-collapse: separate;
+	border: 1px solid #9DABCE;
+	border-width: 0px 0px 1px 1px;
+	margin: 10px auto;
+	font-size: 20px;
+}
+#month_calendar td, #month_calendar th {
+	width: 61px;
+	height: 61px;
+	text-align: center;
+	vertical-align: middle;
+	background: url(../images/cells.png);
+	color: #444;
+	position: relative;
+    padding: 0;
+    font-size:14px;
+}
+
+#month_calendar td a, #month_calendar th a {
+    color: #444444;
+    font-size:14px;
+}
+
+#month_calendar th {
+	height: 30px;
+	font-weight: bold;
+	font-size: 14px;
+}
+#month_calendar td p.total_price {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 5px;
+    text-align: center;
+}
+
+#month_calendar td:hover, #month_calendar th:hover {
+	background-position: 0px -81px;
+	color: #222;
+}
+#month_calendar td.date_has_event {
+	background-position: 162px 0px;
+	color: white;
+}
+#month_calendar td.date_has_event a {
+    color: white;
+}
+#month_calendar td.date_has_event:hover {
+	background-position: 162px -81px;
+}
+#month_calendar td.padding {
+	background: url(../images/calpad.jpg);
+}
+#month_calendar td.today {
+	background-position: 81px 0px;
+	color: white;
+}
+#month_calendar td.today a {
+    color: white;
+}
+#month_calendar td.today:hover {
+	background-position: 81px -81px;
+}
+#month_calendar .events {
+	position: relative;
+}
+#month_calendar .events ul {
+	text-align: left;
+	position: absolute;
+	display: none;
+	z-index: 1000;
+	padding: 5px;
+	background: #E7ECF2 url(../images/popup.png) no-repeat;
+	color: white;
+	border: 1px solid white;
+	font-size: 15px;
+	width: 200px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-border-radius: 3px;
+	list-style: none;
+	color: #444444;
+	-webkit-box-shadow: 0px 8px 8px #333;
+}
+#month_calendar .events li {
+	padding-bottom: 5px;
+}
+#month_calendar .events li span {
+	display: block;
+	font-size: 10px;
+	text-align: justify;
+	color: #555555;
+}
+#month_calendar .events li span.title {
+	font-weight: bold;
+	color: #222222;
+}
+div.home_block {
+    float: left;
+    width: 500px;    
+}

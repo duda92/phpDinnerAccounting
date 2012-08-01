@@ -1,0 +1,27 @@
+<?php
+$currPage = '';
+switch($_REQUEST['action'])
+{
+    case 'order': $currPage = 'Orders page'; break;
+    default: break;
+}
+if(strlen($currPage)>0) $currPage = '&raquo; '.$currPage;
+?>
+<div class="breadcrumbs">
+    <a href="/">Home</a> <strong><?php echo $currPage; ?></strong>
+</div>
+
+<div class="content">
+    <?php
+    switch($_REQUEST['action'])
+    {
+        case 'order':
+            include 'order.phtml';
+        break;
+    
+        default:
+            include 'home.phtml';
+        break;
+    }
+    ?>    
+</div>
